@@ -8,6 +8,8 @@ import Animated, {
   interpolateColor,
 } from "react-native-reanimated";
 
+const PressableAnimated = Animated.createAnimatedComponent(Pressable);
+
 import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
 import { useEffect } from "react";
@@ -39,7 +41,7 @@ export function Level({
       backgroundColor: interpolateColor(
         checked.value,
         [0, 1],
-        ['rgba(0,0,0,0)', COLOR]
+        ["rgba(0,0,0,0)", COLOR]
       ),
     };
   });
@@ -69,20 +71,21 @@ export function Level({
   }, [isChecked]);
 
   return (
-    <Pressable onPressIn={onPressIn} onPressOut={onPressOut} {...rest}>
-      <Animated.View
-        style={[
-          styles.container,
-          animatedContainerStyle,
-          {
-            borderColor: COLOR,
-          },
-        ]}
-      >
-        <Animated.Text style={[styles.title, animatedTextStyle]}>
-          {title}
-        </Animated.Text>
-      </Animated.View>
-    </Pressable>
+    <PressableAnimated
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      {...rest}
+      style={[
+        styles.container,
+        animatedContainerStyle,
+        {
+          borderColor: COLOR,
+        },
+      ]}
+    >
+      <Animated.Text style={[styles.title, animatedTextStyle]}>
+        {title}
+      </Animated.Text>
+    </PressableAnimated>
   );
 }
