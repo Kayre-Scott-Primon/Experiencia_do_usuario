@@ -39,10 +39,10 @@ export function Question({
   });
 
   const exitingKeyFrame = new Keyframe({
-    from: { opacity: 1, transform: [{ translateX: 0 }, { rotate: "0" }] },
+    from: { opacity: 1, transform: [{ translateX: 0 }, { rotate: "0deg" }] },
     to: {
       opacity: 0,
-      transform: [{ translateX: -SCREEN_WIDTH }, { rotate: "-90deg" }],
+      transform: [{ translateX: SCREEN_WIDTH * (-1) }, { rotate: "-90deg" }],
     },
   });
 
